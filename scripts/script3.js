@@ -12,7 +12,7 @@ function isValidPassword(username, password){
 let username = prompt("enter your username");
 let password = prompt("enter your password");
 
-check = isValidPassword(username, password);
+let check = isValidPassword(username, password);
 
 if (check == true){
     console.log("Your password meets the requirements")
