@@ -15,9 +15,9 @@ let password = prompt("enter your password");
 let check = isValidPassword(username, password);
 
 if (check == true){
-    console.log("Your password meets the requirements")
+    console.log("Your password meets the requirements");
 }
 else{
-    console.log("your password do not meet the requirements")
+    console.log("your password do not meet the requirements");
 }
 
