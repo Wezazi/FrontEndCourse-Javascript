@@ -5,7 +5,6 @@ function guessNumberGame(){
 
     while (true){
         let guess = prompt("guess the number betweem 0-10");
-        console.log(guess);
         if (guess == number){
             console.log("your guess was correct");
             break;
@@ -56,7 +55,7 @@ function sumEvenNumbers(array){
 
 input = prompt("enter comma seperated values");
 
-//when using .map, i don't need to make a for loop to trim and change each string value to int: for (let i = 0; i < list.length; i += 1){list [i] = parseInt(list[i].trim());}
+//when using .map, i don't need to make a for loop to trim and change each string value to int: list = input.split(","); for (let i = 0; i < list.length; i += 1){list [i] = parseInt(list[i].trim());}
 
 list = input.split(",").map(function convertValues(value){ // .map returns a new list. The first argument is a function that is gonna run for each array value. The rest of the arguments are automatically passed in to that function as arguments. The first argument passed in is the current list value, the second arugment is the current value index. array.map(function(currentValue, index)). So .map() returns a new list containing the modified values returned from the function in the first parameter
     return parseInt(value.trim());
