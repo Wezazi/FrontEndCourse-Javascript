@@ -56,7 +56,7 @@ function atm(){
     switch(input){
         case 1:
             account.getAccountName();
-            break; //exits the switch statement, and not the function
+            break; //exits the switch statement, and not the function. Without breaking, the other cases will also get returned
         case 2:
             account.getBalance();
             break;
