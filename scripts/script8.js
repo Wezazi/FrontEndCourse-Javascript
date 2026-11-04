@@ -14,7 +14,8 @@ function addBook(){
 function listBooks(){
     for (let book of library){
         console.log(`Title: ${book.title}, Author: ${book.author}, isRead: ${book.isRead} `)
-    } 
+    }
+
 }
 
 function markAsRead(title){
@@ -35,12 +36,22 @@ function removeBook(title){
     }
 }
 
+function unread(){
+    let list = []
+    for (let book of library){
+        if (book.isRead == false){
+            list.push(book);
+        }
+    }
+    return list;
+}
+
 
 function loop(){
     let title;
     let run;
     while(true){
-        const choice = prompt(`Select 1.Add Book 2.List Books 3.Mark Book as Read 4.Remove book from library 6.Exit`)
+        const choice = prompt(`Select 1.Add Book 2.List Books 3.Mark Book as Read 4.Remove book from library 5.List unread books 6.Exit`)
 
         switch(choice){
             case "1":
@@ -69,9 +80,23 @@ function loop(){
                     console.log("invalid name");
                 }
                 break;
+            
+            case "5":
+                run = unread()
+                if (run){
+                    for (let book of run){
+                        console.log(`Title: ${book.title} Author: ${book.author}`);
+                    }
+                }
+                else{
+                    console.log("You have read all available books!")
+                }
+                break;
+
                 
             case "6":
                 return;
+
             default:
                 "invalid choice"
                 break;
