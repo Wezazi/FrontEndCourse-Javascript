@@ -99,6 +99,16 @@ function gameOver(){
     endgameEl.appendChild(gameOver);
     endgameEl.appendChild(scoreContainer);
     scoreContainer.style.right = "220px";
+    const restart = document.createElement("button");
+    endgameEl.appendChild(restart);
+    restart.textContent = "RESTART";
+    restart.style.width = "200px";
+    restart.style.height = "50px";
+    restart.style.backgroundColor = "GreenYellow";
+    restart.onclick = () => {
+        location.reload();
+    }
+    
 }
 
 
