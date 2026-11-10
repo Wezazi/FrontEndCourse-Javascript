@@ -9,6 +9,8 @@ const settingsForm = document.getElementById("settings-form");
 const settingsBtn = document.getElementById("settings-btn");
 const difficultySelect = document.getElementById("difficulty");
 
+const scoreContainer = document.getElementsByClassName("score-container")[0];
+
 // Array
 const words = [
   "dependent",
@@ -32,8 +34,8 @@ const words = [
   "north",
 ];
 
-
-let randomWord = words[Math.floor(Math.random() * words.length)];
+//Initializing randomWord
+let randomWord;
 
 //Initializing score
 let score = 0;
@@ -42,10 +44,9 @@ let score = 0;
 let time = 10;
 
 function addWordToDOM(){
-  word.textContent = randomWord;
-
+    randomWord = words[Math.floor(Math.random() * words.length)];
+    word.textContent = randomWord;
 }
-
 addWordToDOM()
 
 function updateScore(){
@@ -59,14 +60,36 @@ text.addEventListener("keydown", (event)=>{
 
         if (event.target.value == word.textContent){
             updateScore();
+            addWordToDOM();
+            time = time + 5;
+            timeEl.textContent = String(time);
         }
-
         event.target.value = ""; //removes the text from the input element after user press enter
     }
 })
 
 
 
+function updateTime(){
+    time = time -1;
+    timeEl.textContent = String(time);
+    if(time == 0){
+        clearInterval(timer);
+        gameOver();
+    }
+}
+
+const timer = setInterval(updateTime, 1000);
+
+function gameOver(){
+    endgameEl.style.display = "block";
+    const gameOver = document.createElement("h2");
+    gameOver.textContent = "GAME OVER";
+    endgameEl.appendChild(gameOver);
+    //endgameEl.appendChild(scoreEl);
+    endgameEl.appendChild(scoreContainer);
+    scoreContainer.style.right = "220px";
+}
 
 
 //text.addEventListener("input", (event)=>{
