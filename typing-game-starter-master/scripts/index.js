@@ -61,13 +61,24 @@ text.addEventListener("keydown", (event)=>{
         if (event.target.value == word.textContent){
             updateScore();
             addWordToDOM();
-            time = time + 5;
+
+            switch(difficultySelect.value){
+                case "easy":
+                    time = time + 5;
+                    break; //Don't forget this otherwise it will go through all other cases afterwards
+                case "medium":
+                    time = time + 3;
+                    break;
+                case "hard":
+                    time = time + 2;
+                    break;
+            }
+            //time = time + 5;
             timeEl.textContent = String(time);
         }
         event.target.value = ""; //removes the text from the input element after user press enter
     }
 })
-
 
 
 function updateTime(){
@@ -86,16 +97,17 @@ function gameOver(){
     const gameOver = document.createElement("h2");
     gameOver.textContent = "GAME OVER";
     endgameEl.appendChild(gameOver);
-    //endgameEl.appendChild(scoreEl);
     endgameEl.appendChild(scoreContainer);
     scoreContainer.style.right = "220px";
 }
 
 
-//text.addEventListener("input", (event)=>{
-    //Just to check what each property returns
-    //console.log(event);
-    //console.log(event.target);
-    //console.log(event.target.value);
-   
-//})
+settingsBtn.addEventListener("click", (event) =>{
+    settings.classList.toggle("hide"); //I didn't even know i could do this without assigning the hide class to the settings element
+})
+
+
+
+//console.log(difficultySelect.value);
+//console.log(difficultySelect); 
+//Notice that difficultySelect.value returns a lowercase "easy" while the text uses capital "Easy", keep this in mind when creating if statements/switch case
